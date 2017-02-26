@@ -408,7 +408,7 @@ int ntag21x_access_disable(FreefareTag tag,uint8_t byte) // Disable access featu
 int ntag21x_get_access(FreefareTag tag,uint8_t *byte) // Get ACCESS byte
 {
   BUFFER_INIT(cdata,4);
-  int page = ntag21x_get_last_page(tag) - 2; // ACCESS byte is on 3th page from back
+  uint8_t page = ntag21x_get_last_page(tag) - 2; // ACCESS byte is on 3th page from back
   int res;
   res = ntag21x_read4(tag,page,cdata); // Read current configuration from tag
   if(res < 0)
@@ -426,6 +426,34 @@ int ntag21x_check_access(FreefareTag tag,uint8_t byte,bool *result) // Check if 
 
   *result = (buff[0]&byte)>0; // Set result, check if bit is 1 in access byte
 
+  return res;
+}
+int ntag21x_get_authentication_limit(FreefareTag tag,uint8_t *byte) // Get authentication limit
+{
+  BUFFER_INIT(cdata,4);
+  uint8_t page = ntag21x_get_last_page(tag) - 2; // ACCESS byte is on 3th page from back
+  int res;
+  res = ntag21x_read4(tag,page,cdata); // Read current configuration from tag
+  if(res < 0)
+    return res;
+  cdata[0]&=0x07; // Extract last 3 bits from access byte
+  memcpy(byte,cdata,1); // Return 1 byte of page
+  return res;
+}
+int ntag21x_set_authentication_limit(FreefareTag tag,uint8_t byte) // Set authentication limit (0x00 = disabled, [0x01,0x07] = valid range, > 0x07 invalid range)
+{
+  if(byte > 7) // Check for invalid range of auth limit
+    return -1;
+
+  BUFFER_INIT(cdata,4);
+  int page = ntag21x_get_last_page(tag) - 2; // ACCESS byte is on 3th page from back
+  int res;
+  res = ntag21x_read4(tag,page,cdata); // Read current configuration from tag
+  if(res < 0)
+    return res;
+  cdata[0] &= 0xf8; // Reset auth limit bits
+  cdata[0] |= byte; // Set aut limit
+  res = ntag21x_write(tag,page,cdata); // Write new configuration to tag
   return res;
 }
 /*

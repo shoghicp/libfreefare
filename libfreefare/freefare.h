@@ -139,6 +139,8 @@ int ntag21x_access_enable(FreefareTag tag,uint8_t byte); // Enable access featur
 int ntag21x_access_disable(FreefareTag tag,uint8_t byte); // Disable access feature in ACCESS byte
 int ntag21x_get_access(FreefareTag tag,uint8_t *byte); // Get ACCESS byte
 int ntag21x_check_access(FreefareTag tag,uint8_t byte,bool *result); // Check if access feature is enabled
+int ntag21x_get_authentication_limit(FreefareTag tag,uint8_t *byte); // Get authentication limit
+int ntag21x_set_authentication_limit(FreefareTag tag,uint8_t byte); // Set authentication limit (0x00 = disabled, [0x01,0x07] = valid range, > 0x07 invalid range)
 int ntag21x_read (FreefareTag tag, uint8_t page,uint8_t *data); // Read 16 bytes starting from page
 int ntag21x_read4(FreefareTag tag,uint8_t page,uint8_t *data); // Read 4 bytes on page
 int ntag21x_fast_read (FreefareTag tag, uint8_t start_page,uint8_t end_page, uint8_t *data); // Read n*4 bytes from range [start_page,end_page]
