@@ -37,19 +37,21 @@ freefare_tag_new (nfc_device *device, nfc_target target)
     FreefareTag tag = NULL;
 
     if (felica_taste (device, target)) {
-	tag = felica_tag_new (device, target);
+	     tag = felica_tag_new (device, target);
     } else if (mifare_mini_taste (device, target)) {
-    tag = mifare_mini_tag_new (device, target);
+      tag = mifare_mini_tag_new (device, target);
     } else if (mifare_classic1k_taste (device, target)) {
-	tag = mifare_classic1k_tag_new (device, target);
+	     tag = mifare_classic1k_tag_new (device, target);
     } else if (mifare_classic4k_taste (device, target)) {
-	tag = mifare_classic4k_tag_new (device, target);
+	     tag = mifare_classic4k_tag_new (device, target);
     } else if (mifare_desfire_taste (device, target)) {
-	tag = mifare_desfire_tag_new (device, target);
+	     tag = mifare_desfire_tag_new (device, target);
+    } else if (ntag21x_taste (device, target)) {
+ 	     tag = ntag21x_tag_new (device, target);
     } else if (mifare_ultralightc_taste (device, target)) {
-	tag = mifare_ultralightc_tag_new (device, target);
+	     tag = mifare_ultralightc_tag_new (device, target);
     } else if (mifare_ultralight_taste (device, target)) {
-	tag = mifare_ultralight_tag_new (device, target);
+	     tag = mifare_ultralight_tag_new (device, target);
     }
 
     return tag;
@@ -169,6 +171,8 @@ freefare_get_tag_friendly_name (FreefareTag tag)
 	return "Mifare UltraLightC";
     case MIFARE_ULTRALIGHT:
 	return "Mifare UltraLight";
+    case NTAG_21x:
+  return "NTAG21x";
     default:
 	return "UNKNOWN";
     }
