@@ -111,6 +111,7 @@ bool		 is_mifare_ultralightc_on_reader (nfc_device *device, nfc_iso14443a_info n
 #define NTAG_CFGLCK 0x40
 #define NTAG_NFC_CNT_EN 0x20
 #define NTAG_NFC_CNT_PWD_PROT 0x10
+#define NTAG_AUTHLIM 0x07
 
 enum ntag_tag_subtype
 {
