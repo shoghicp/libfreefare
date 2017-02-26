@@ -15,6 +15,7 @@ set(EXAMPLES-SOURCES
         mifare-detect-tag
         ntag-write
         ntag-setauth
+        ntag-removeauth
 )
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../libfreefare)

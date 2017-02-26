@@ -18,7 +18,8 @@ bin_PROGRAMS = felica-lite-dump \
 	       mifare-ultralight-info \
 				 mifare-detect-tag \
 				 ntag-write \
-				 ntag-setauth
+				 ntag-setauth \
+				 ntag-removeauth
 
 felica_lite_dump_SOURCES = felica-lite-dump.c
 felica_lite_dump_LDADD = $(top_builddir)/libfreefare/libfreefare.la
@@ -73,5 +74,8 @@ ntag_write_LDADD = $(top_builddir)/libfreefare/libfreefare.la
 
 ntag_setauth_SOURCES = ntag-setauth.c
 ntag_setauth_LDADD = $(top_builddir)/libfreefare/libfreefare.la
+
+ntag_removeauth_SOURCES = ntag-removeauth.c
+ntag_removeauth_LDADD = $(top_builddir)/libfreefare/libfreefare.la
 
 CLEANFILES=	*.gcno
