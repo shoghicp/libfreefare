@@ -78,7 +78,7 @@ main (int argc, char *argv[])
       key = ntag21x_key_new(pwd,pack); // Creating key
 
       uint8_t auth0 = 0x00; // Buffer for auth0 byte
-
+      uint8_t authlim = 0x00;
       switch (true) {
         case true:
           /*
@@ -99,6 +99,13 @@ main (int argc, char *argv[])
             break;
           }
           printf("Old auth0: %#02x\n",auth0);
+          res = ntag21x_get_authentication_limit(tag,&authlim);
+          if(res<0)
+          {
+            printf("Error getting auth0 byte from tag\n");
+            break;
+          }
+          printf("Authlim: %#02x\n",authlim);
           // Check if auth is required to set pwd and pack
           if(auth0 < ntag21x_get_last_page(tag) - 2) // Check if last 2 pages are protected
           {
