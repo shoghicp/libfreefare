@@ -85,7 +85,7 @@ main (int argc, char *argv[])
             Get information about tag
             MUST do, because here we are recognizing tag subtype (NTAG213,NTAG215,NTAG216), and gathering all parameters
           */
-          res = ntag_21x_get_info(tag);
+          res = ntag21x_get_info(tag);
           if(res<0)
           {
             printf("Error getting info from tag\n");

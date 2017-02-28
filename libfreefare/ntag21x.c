@@ -245,7 +245,7 @@ int ntag21x_disconnect (FreefareTag tag)
 /*
 * Gather information about tag
 */
-int ntag_21x_get_info(FreefareTag tag)
+int ntag21x_get_info(FreefareTag tag)
 {
   ASSERT_ACTIVE (tag);
 
