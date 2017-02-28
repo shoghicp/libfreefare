@@ -124,6 +124,7 @@ bool ntag21x_taste (nfc_device *device, nfc_target target);
 FreefareTag ntag21x_tag_new (nfc_device *device, nfc_target target);
 FreefareTag ntag21x_tag_reuse (FreefareTag tag); // Copy data from Ultralight tag to new NTAG21x, don't forget to free your old tag
 NTAG21xKey ntag21x_key_new(const uint8_t data[4],const uint8_t pack[2]); // Create new key
+void ntag21x_key_free(NTAG21xKey key); // Clear key from memory
 void ntag21x_tag_free (FreefareTag tag);
 int ntag21x_connect (FreefareTag tag);
 int ntag21x_disconnect (FreefareTag tag);

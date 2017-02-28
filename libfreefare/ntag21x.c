@@ -181,6 +181,13 @@ NTAG21xKey ntag21x_key_new(const uint8_t data[4],const uint8_t pack[2])
   }
   return key;
 }
+/*
+* Free NTAG key
+*/
+void ntag21x_key_free(NTAG21xKey key)
+{
+  free(key);
+}
 
 /*
  * Free the provided tag.
