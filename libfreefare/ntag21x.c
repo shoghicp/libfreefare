@@ -284,6 +284,14 @@ int ntag_21x_get_info(FreefareTag tag)
   return 0;
 }
 /*
+* Get subtype of tag
+*/
+enum ntag_tag_subtype ntag21x_get_subtype(FreefareTag tag)
+{
+  return NTAG_21x(tag)->subtype;
+}
+
+/*
 * Get last page
 */
 uint8_t ntag21x_get_last_page(FreefareTag tag)
