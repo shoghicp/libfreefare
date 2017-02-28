@@ -147,8 +147,8 @@ main (int argc, char *argv[])
 
       ntag21x_disconnect (tag);
 
-      free(key); // Delete key
-      free(key_old); // Delete key
+      ntag21x_key_free(key); // Delete key
+      ntag21x_key_free(key_old); // Delete key
 	    free (tag_uid);
 	}
 
