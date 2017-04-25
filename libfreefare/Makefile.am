@@ -14,7 +14,8 @@ libfreefare_la_SOURCES = felica.c \
 			 mifare_desfire_key.c \
 			 mad.c \
 			 mifare_application.c \
-			 tlv.c
+			 tlv.c \
+			 ntag21x.c
 libfreefare_la_LIBADD =
 
 if WITH_DEBUG
